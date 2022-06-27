@@ -1,20 +1,29 @@
 package com.bridgelabz.controller;
-
 import com.bridgelabz.entity.Greeting;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.bridgelabz.service.IGreetingApp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.atomic.AtomicLong;
+
 
 @RestController
 public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+
+    @Autowired
+    IGreetingApp greetingApp;
+
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue ="world") String name) {
-        return new Greeting(counter.incrementAndGet(),String.format(template,name));
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "world") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
+    @GetMapping("/hello")
+   public String hello()
+   {
+       String msg=greetingApp.getMessage();
+       return msg;
+   }
 
 }
