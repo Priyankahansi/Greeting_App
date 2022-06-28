@@ -31,4 +31,10 @@ public class GreetingController {
      String getGreeting=greetingApp.getGreeting(greeting);
      return getGreeting;
    }
+    @GetMapping("/getMessage/{getId}")
+    public Greeting getMessage(@PathVariable long getId)
+    {
+        Greeting greeting=greetingApp.getGreetingMessage(getId);
+        return greeting;
+    }
 }

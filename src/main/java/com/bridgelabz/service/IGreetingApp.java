@@ -6,6 +6,9 @@ public interface IGreetingApp {
     public String getMessage();
 
     public String getGreeting(Greeting greeting);
+
+    Greeting getGreetingMessage(long getId);
+
 }
 
 
