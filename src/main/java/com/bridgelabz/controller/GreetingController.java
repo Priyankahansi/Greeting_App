@@ -45,6 +45,16 @@ public class GreetingController {
         List<Greeting> greeting=greetingApp.getGreetings();
         return greeting;
     }
+    @DeleteMapping("/delete")
+    public String deleteMessage(@RequestParam long id){
+        greetingApp.deleteMessage(id);
+        return "Deleted....!";
+    }
+    @PutMapping("/updateUser/{getId}")
+    public Greeting updateUser(@PathVariable long getId,@RequestBody Greeting  greeting){
+        Greeting message=greetingApp.updateUserMessage(getId,greeting);
+        return message;
+    }
 }
 
 

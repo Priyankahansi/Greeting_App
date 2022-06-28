@@ -13,6 +13,10 @@ public interface IGreetingApp {
 
     List<Greeting> getGreetings();
 
+    void deleteMessage(long id);
+
+    Greeting updateUserMessage(long getId, Greeting greeting);
+
 }
 
 

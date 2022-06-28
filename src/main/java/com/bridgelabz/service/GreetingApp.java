@@ -28,17 +28,33 @@ public class GreetingApp implements IGreetingApp {
 
     @Override
     public Greeting getGreetingMessage(long getId) {
-      Optional<Greeting> greeting  =repo.findById(getId);
-      return greeting.get();
+        Optional<Greeting> greeting = repo.findById(getId);
+        return greeting.get();
     }
 
     @Override
     public List<Greeting> getGreetings() {
-        List<Greeting> greetings=repo.findAll();
+        List<Greeting> greetings = repo.findAll();
         return greetings;
     }
-}
 
+    @Override
+    public void deleteMessage(long id) {
+        repo.deleteById(id);
+    }
+
+    @Override
+    public Greeting updateUserMessage(long getId, Greeting greeting) {
+        Optional<Greeting> newGreeting = repo.findById(getId);
+        if (newGreeting.isPresent()) {
+            newGreeting.get().setMessages(greeting.getMessage());
+            repo.save(newGreeting.get());
+            return newGreeting.get();
+        } else {
+            return null;
+        }
+    }
+}
 
 
 
