@@ -3,6 +3,8 @@ import com.bridgelabz.entity.Greeting;
 import com.bridgelabz.service.IGreetingApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 
@@ -37,4 +39,13 @@ public class GreetingController {
         Greeting greeting=greetingApp.getGreetingMessage(getId);
         return greeting;
     }
+    @GetMapping("/getGreeting")
+    public List<Greeting> getMessages()
+    {
+        List<Greeting> greeting=greetingApp.getGreetings();
+        return greeting;
+    }
 }
+
+
+
