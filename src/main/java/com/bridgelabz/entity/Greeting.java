@@ -33,7 +33,14 @@ public class Greeting {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessages(String message) {
         this.message = message;
+    }
+    @Override
+    public String toString() {
+        return "Greeting{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                '}';
     }
 }
